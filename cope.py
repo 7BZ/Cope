@@ -1,9 +1,21 @@
 import discord, requests, os, asyncio, colorama, time, asyncio, threading, sys
+from pypresence import Presence
 from colorama import Fore
 from discord.ext import commands
 
 os.system('cls & mode 50,20 & title Cope - Config')
 token = input(f"[{Fore.RED}Cope{Fore.RESET}]~ Token{Fore.RED}: {Fore.RESET}")
+rpresence = input(f'[{Fore.RED}Cope{Fore.RESET}]~ Rich Presence (Y \ N){Fore.RED}: {Fore.RESET}')
+
+def RichPresence():
+    if rpresence.upper() == "y" or rpresence.lower() == "y":
+        try:
+            RPC = Presence("829084497655234571")
+            RPC.connect()
+            RPC.update(large_image="8",details="Cry with me?",buttons=[{"label":"Github","url":"https://github.com/7BZ"}],start=time.time())
+        except:
+            pass
+rpresence = RichPresence()
 
 client = commands.Bot(command_prefix=">",self_bot=True,intents=discord.Intents.all())
 client.remove_command('help')
@@ -31,7 +43,7 @@ class Cope:
 			guildOBJ2 = client.get_guild(int(urguild))
 			for c in guildOBJ2.channels:
 				await c.delete()
-		
+
 
 	async def RolesCopy(self):
 		urguild = input(f"[{Fore.RED}Cope{Fore.RESET}]~ Your Guild ID{Fore.RED}: {Fore.RESET}")
@@ -52,7 +64,7 @@ class Cope:
 		for a in guildOBJ2.roles:
 			if a.name == guildOBJ2.default_role.name:
 				pass
-			elif a.managed == False: 
+			elif a.managed == False:
 				await a.delete()
 			else:
 				pass
@@ -83,12 +95,12 @@ class Cope:
 	async def Menu(self):
 		os.system(f"""cls & mode 50,20 & title Cope - User: {client.user}""")
 		print(f'''
-{Fore.LIGHTBLACK_EX} ▄█▄    ████▄ █ ▄▄  ▄███▄   
-{Fore.LIGHTBLACK_EX} █▀ ▀▄  █   █ █   █ █▀   ▀  
+{Fore.LIGHTBLACK_EX} ▄█▄    ████▄ █ ▄▄  ▄███▄
+{Fore.LIGHTBLACK_EX} █▀ ▀▄  █   █ █   █ █▀   ▀
 {Fore.LIGHTBLACK_EX} █   ▀  █   █ █▀▀▀  ██▄▄    {Fore.RESET} Type {Fore.RED}HELP {Fore.RESET}For Help.
 {Fore.LIGHTBLACK_EX} █▄  ▄▀ ▀████ █     █▄   ▄▀ {Fore.RESET} Made by {Fore.RED}sordo{Fore.RESET}
-{Fore.LIGHTBLACK_EX} ▀███▀         █    ▀███▀   
-{Fore.LIGHTBLACK_EX}                ▀           
+{Fore.LIGHTBLACK_EX} ▀███▀         █    ▀███▀
+{Fore.LIGHTBLACK_EX}                ▀
 {Fore.RESET}''')
 		outputz = input(f"[{Fore.RED}Cope{Fore.RESET}]~ {Fore.RED}: {Fore.RESET}")
 		if outputz.lower() == "help" or outputz.upper() == "help":
