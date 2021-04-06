@@ -1,4 +1,4 @@
-import discord, requests, os, asyncio, colorama, time, asyncio, threading, sys, webbrowser
+import discord, requests, os, asyncio, colorama, time, asyncio, threading, sys
 from colorama import Fore
 from discord.ext import commands
 
