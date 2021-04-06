@@ -24,8 +24,6 @@ class Cope:
 						await x.create_voice_channel(chann.name)
 					if isinstance(chann, discord.TextChannel):
 						await x.create_text_channel(chann.name)
-					if isinstance(chann, discord.StageChannel):
-						await x.create_stage_channel(chann.name)
 
 
 	async def DeleteChannels(self):
