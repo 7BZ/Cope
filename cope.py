@@ -1,4 +1,4 @@
-import discord, requests, os, asyncio, colorama, time, asyncio, threading, sys
+import discord, requests, os, asyncio, colorama, time, asyncio, threading, sys, webbrowser
 from colorama import Fore
 from discord.ext import commands
 
@@ -59,6 +59,15 @@ class Cope:
 			else:
 				pass
 
+	async def GuildPic(self):
+		guild = input(f"[{Fore.RED}Cope{Fore.RESET}]~ Guild ID{Fore.RED}: {Fore.RESET}")
+		guildOBJ = client.get_guild(int(guild))
+		r = requests.get(guildOBJ.icon_url)
+		with open(f'{guildOBJ.name}.gif','wb') as f:
+			f.write(r.content)
+			f.close()
+
+
 	def Message(self):
 		print(f'''
 [{Fore.RED}HELP{Fore.RESET}] - Help
@@ -66,6 +75,7 @@ class Cope:
 [{Fore.RED}2{Fore.RESET}] - Copy Roles
 [{Fore.RED}3{Fore.RESET}] - Delete Channels
 [{Fore.RED}4{Fore.RESET}] - Delete Roles
+[{Fore.RED}5{Fore.RESET}] - Copy Guild Icon
 [{Fore.RED}C{Fore.RESET}] - Credits''')
 
 	def Message2(self):
@@ -101,6 +111,10 @@ class Cope:
 			await self.Menu()
 		elif outputz == "4":
 			await self.DeleteRoles()
+			time.sleep(2)
+			await self.Menu()
+		elif outputz == "5":
+			await self.GuildPic()
 			time.sleep(2)
 			await self.Menu()
 		elif outputz.lower() == "c" or outputz.upper() == "c":
